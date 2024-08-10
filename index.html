@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAHIYAN ADMIN PANEL</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #71b7e6, #9b59b6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            transition: background-color 0.3s ease;
+        }
+
+        .admin-panel {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            width: 350px;
+            text-align: center;
+            position: relative;
+        }
+
+        .admin-panel-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .admin-panel button {
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .admin-panel button:hover {
+            background-color: #45a049;
+        }
+
+        .dark-mode-toggle {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .dark-mode-toggle label {
+            font-size: 16px;
+        }
+
+        .dark-mode-toggle input {
+            margin-left: 10px;
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background: #333;
+            color: #fff;
+        }
+
+        body.dark-mode .admin-panel {
+            background: #444;
+            color: #fff;
+        }
+
+        body.dark-mode .admin-panel button {
+            background-color: #666;
+            color: #fff;
+        }
+
+        body.dark-mode .admin-panel button:hover {
+            background-color: #555;
+        }
+
+        .loading-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .loading-overlay .loader {
+            border: 8px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 8px solid #3498db;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="admin-panel">
+        <div class="admin-panel-title">RAHIYAN ADMIN PANEL</div>
+
+        <div class="dark-mode-toggle">
+            <label for="darkMode">Dark Mode:</label>
+            <input type="checkbox" id="darkMode">
+        </div>
+
+        <button onclick="window.location.href='http://192.168.0.1'">TP-Link</button>
+        <button onclick="window.location.href='http://192.168.1.1'">Mercusys</button>
+        <button onclick="window.location.href='http://192.168.4.1'">NODMCU</button>
+        <button onclick="window.location.href='http://192.168.192.1'">Personal</button>
+        <button id="vipButton">VIP</button>
+
+        <div class="loading-overlay" id="loadingOverlay">
+            <div class="loader"></div>
+        </div>
+    </div>
+
+    <script>
+        // Dark Mode Toggle Script
+        const darkModeToggle = document.getElementById('darkMode');
+        darkModeToggle.addEventListener('change', function () {
+            if (this.checked) {
+                document.body.classList.add('dark-mode');
+            } else {
+                document.body.classList.remove('dark-mode');
+            }
+        });
+
+        // VIP Button Click Event
+        document.getElementById('vipButton').addEventListener('click', function() {
+            document.getElementById('loadingOverlay').style.display = 'flex';
+            setTimeout(function() {
+                window.location.href = 'http://192.168.0.1';
+            }, 30000); // 30 seconds delay
+        });
+    </script>
+
+</body>
+</html>
